@@ -1,0 +1,22 @@
+// Handles all authentication for the app using NextAuth.
+// We're using Google login so users can sign in with their Google account.
+
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+
+export const authOptions = {
+    providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        }),
+    ],
+    callbacks: {
+        async session({ session, token }) {
+            return session;
+        },
+    },
+};
+
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
