@@ -1,6 +1,3 @@
-// Handles all authentication for the app using NextAuth.
-// We're using Google login so users can sign in with their Google account.
-
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
